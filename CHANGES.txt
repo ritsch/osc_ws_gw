@@ -1,3 +1,7 @@
+0.4.1:
+* added TCP/IP OSC connection
+* not working since OSC has to be packaged
+
 0.3.3: 2022 Feb 21
 
 * fixed run script not working in non-bash shells
