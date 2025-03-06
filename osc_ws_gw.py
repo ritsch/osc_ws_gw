@@ -30,13 +30,13 @@ parser.add_argument(
     default="127.0.0.1", help="udp receive addr, default: 127.0.0.1")
 parser.add_argument(
     "--recvport", action="store", dest="recvport",
-    default=9999, type=int, help="udp receive port, default: 9999")
+    default=4444, type=int, help="udp receive port, default: 4444")
 parser.add_argument(
     "--sendaddr", action="store", dest="sendaddr",
     default="127.0.0.1", help="udp send addr, default: 127.0.0.1")
 parser.add_argument(
     "--sendport", action="store", dest="sendport",
-    default=8888, type=int, help="udp send port, default: 8888")
+    default=5555, type=int, help="udp send port, default: 5555")
 parser.add_argument(
     "--oscaddr", action="store", dest="oscaddr",
     default="127.0.0.1", help="TCP/IP addr, default: 127.0.0.1")
@@ -51,33 +51,33 @@ parser.add_argument("-v", "--verbose", action="store_true", dest="verbose",
     help="enable verbose printing")
 
 
-##### TCP/IP Sender
-class OSCstream:
+# ##### TCP/IP Sender
+# class OSCstream:
 
-    def __init__(self, addr=oscaddr, port, verbose=True):
-        self.addr = addr
-        self.port = port
-        self.verbose = verbose
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect((self.addr, self.port))
-        if self.verbose:
-            print(f"osc sender: connected to {self.addr}:{self.port}")
+#     def __init__(self, addr=oscaddr, port=3333, verbose=True):
+#         self.addr = addr
+#         self.port = port
+#         self.verbose = verbose
+#         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#         self.sock.connect((self.addr, self.port))
+#         if self.verbose:
+#             print(f"osc sender: connected to {self.addr}:{self.port}")
 
-    def close(self):
-        self.sock.close()
-        if self.verbose:
-            print("osc sender: connection closed")
+#     def close(self):
+#         self.sock.close()
+#         if self.verbose:
+#             print("osc sender: connection closed")
 
-    def send(self, data):
-        self.sock.sendall(data)
-        if self.verbose:
-            print(f"osc sender: sent {data}")
+#     def send(self, data):
+#         self.sock.sendall(data)
+#         if self.verbose:
+#             print(f"osc sender: sent {data}")
 
-    def receive(self):
-        data = self.sock.recv(1024)
-        if self.verbose:
-            print(f"osc sender: received {data}")
-        return data
+#     def receive(self):
+#         data = self.sock.recv(1024)
+#         if self.verbose:
+#             print(f"osc sender: received {data}")
+#         return data
 
 
 ##### UDP

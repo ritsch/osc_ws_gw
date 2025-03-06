@@ -24,11 +24,29 @@ oscPort.open()
 
 function sendMessage() {
     oscPort.send({
-        address: "/bar",
+        address: "//bar",
         args: [
             {type: "s", value: "helloworld"},
             {type: "i", value: 1234},
             {type: "f", value: 567.89}
+        ]
+    })
+}
+
+function sendmaster_80() {
+    oscPort.send({
+        address: "/mxr/master/M/master",
+        args: [
+            {type: "f", value: 80}
+        ]
+    })
+}
+
+function sendmasteroff() {
+    oscPort.send({
+        address: "/mxr/master/M/master",
+        args: [
+            {type: "f", value: 0}
         ]
     })
 }
