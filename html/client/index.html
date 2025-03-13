@@ -19,7 +19,39 @@
         <button type="button" onclick="sendmasteroff()">Master 0</button>
 
     </main>
+    <div></div>
+        <label for="oscAddress">OSC Address:</label>
+        <input type="text" id="oscAddress" placeholder="/example/address">
+    </div>
+    <div>
+        <label for="oscMessage">OSC Message:</label>
+        <input type="text" id="oscMessage" placeholder="Type your message">
+        <button type="button" onclick="sendOscMessage()">Send OSC Message</button>
+    </div>
 
+    <script type="text/javascript">
+        function sendOscMessage() {
+            var address = document.getElementById('oscAddress').value;
+            var message = document.getElementById('oscMessage').value;
+
+            if (address && message) {
+                var oscMessage = {
+                    address: address,
+                    args: [
+                        {
+                            type: "s",
+                            value: message
+                        }
+                    ]
+                };
+
+                // Assuming osc is the OSC library instance
+                osc.send(oscMessage);
+            } else {
+                alert("Please enter both OSC address and message.");
+            }
+        }
+    </script>
     <!-- Message: <input type="text" id="message" value="" placeholder="Type your message (ENTER to send)">
         <input type="button" id="btMsg" name="btMsg" value="Send"><br /><br />
 
